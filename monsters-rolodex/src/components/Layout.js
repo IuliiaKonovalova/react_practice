@@ -7,7 +7,7 @@ const Layout = ({ title, content, children }) => {
         <title>{title}</title>
         <meta name='description' content={content} />
       </Helmet>
-      <div className="flex flex-col h-screen w-full justify-between bg-lime-200 min-h-full">
+      <div className="flex flex-col py-5 min-h-full w-full justify-between bg-lime-200">
         {children}
       </div>
     </>
