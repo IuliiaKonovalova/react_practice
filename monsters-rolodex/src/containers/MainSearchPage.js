@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Layout from "../components/Layout";
 import SearchMonstersBox from '../components/SearchMonstersBox';
 import CardList from '../components/CardList';
 
@@ -37,18 +38,22 @@ const MainSearchPage = () => {
 
 
   return (
-    <div className="App">
-      <h1>Monsters Rolodex</h1>
-      <SearchMonstersBox
-        placeholder="search monsters"
-        onChange = {(e) => {
-          onChangeSearchField(e);
-          
-        }}
-        />
-      {/* map over the monsters */}
-      <CardList monsters={filterMonsters} />
-    </div>
+    <Layout title='Monsters | All' content='Search monsters'>
+      <div className="App container mx-auto">
+        <h1 className="text-4xl text-center my-5 text-lime-900 font-bold">
+          Monsters Rolodex
+        </h1>
+        <SearchMonstersBox
+          placeholder="search monsters"
+          onChange = {(e) => {
+            onChangeSearchField(e);
+            
+          }}
+          />
+        {/* map over the monsters */}
+        <CardList monsters={filterMonsters} />
+      </div>
+    </Layout>
   );
 }
 
