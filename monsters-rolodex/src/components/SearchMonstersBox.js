@@ -1,7 +1,4 @@
-// import React, { useState } from 'react';
-
 const SearchMonstersBox = (props) => {
-  console.log(props);
 
   const { onChange } = props;
 

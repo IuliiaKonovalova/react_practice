@@ -1,8 +1,7 @@
 const CardList = (props) => {
-  console.log(props);
-  console.log(props.monsters);
+
   const monstersList = props.monsters
-  console.log("CardList" + monstersList);
+
   return (
     <div
       className="p-5 my-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

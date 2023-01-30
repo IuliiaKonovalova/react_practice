@@ -9,36 +9,29 @@ const MainSearchPage = () => {
   const [searchField, setSearchField] = useState('');
   const [filterMonsters, setFilterMonsters] = useState(monsters);
 
-  
+  // fetch monsters
   const getMonsters = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
     const data = await response.json();
     setMonsters(data);
-    console.log(data);
   }
 
   useEffect(() => {
     getMonsters();
   }, []);
 
-
+  // Control search field
   useEffect(() => {
       const newFilterMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField));
       setFilterMonsters(newFilterMonsters);
   }, [monsters, searchField]);
 
-  // const filterMonsters = 
+  // control search field
   const onChangeSearchField = (e) => {
     const valueSearchField = e.target.value.toLowerCase();
     setSearchField(valueSearchField);
     console.log(valueSearchField);
   }
-
-  // let filterMonsters;
-
-
-
-
 
   return (
     <Layout title='Monsters | All' content='Search monsters'>
@@ -50,10 +43,8 @@ const MainSearchPage = () => {
           placeholder="search monsters"
           onChange = {(e) => {
             onChangeSearchField(e);
-            
           }}
           />
-        {/* map over the monsters */}
         <CardList monsters={filterMonsters} />
       </div>
     </Layout>
