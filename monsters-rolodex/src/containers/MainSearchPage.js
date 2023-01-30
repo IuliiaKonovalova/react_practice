@@ -7,6 +7,7 @@ import CardList from '../components/CardList';
 const MainSearchPage = () => {
   const [monsters, setMonsters] = useState([]);
   const [searchField, setSearchField] = useState('');
+  const [filterMonsters, setFilterMonsters] = useState(monsters);
 
   
   const getMonsters = async () => {
@@ -20,6 +21,12 @@ const MainSearchPage = () => {
     getMonsters();
   }, []);
 
+
+  useEffect(() => {
+      const newFilterMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField));
+      setFilterMonsters(newFilterMonsters);
+  }, [monsters, searchField]);
+
   // const filterMonsters = 
   const onChangeSearchField = (e) => {
     const valueSearchField = e.target.value.toLowerCase();
@@ -27,13 +34,9 @@ const MainSearchPage = () => {
     console.log(valueSearchField);
   }
 
-  let filterMonsters;
+  // let filterMonsters;
 
-  if (searchField) {
-    filterMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField));
-  } else {
-    filterMonsters = monsters;
-  }
+
 
 
 
